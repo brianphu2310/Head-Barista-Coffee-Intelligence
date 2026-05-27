@@ -1,0 +1,33 @@
+Coffee_Name,Origin,Latitude,Longitude,Roast_Level,Processing_Method,Brew_Method,Acidity,Body,Sweetness,Flavor_Notes,Rating
+Ethiopia Yirgacheffe,Ethiopia,9.03,38.74,Light,Washed,Pour Over,High,Light,High,"floral, jasmine, citrus",94
+Ethiopia Sidamo,Ethiopia,6.14,38.84,Light,Washed,Aeropress,High,Light,High,"berry, lemon, tea-like",92
+Kenya AA,Kenya,-0.02,37.90,Light,Washed,Pour Over,High,Medium,High,"berry, citrus",91
+Kenya Peaberry,Kenya,-0.52,35.27,Light,Washed,Chemex,High,Medium,High,"bright, fruity, grape",90
+Colombia Supremo,Colombia,4.57,-74.30,Medium,Washed,French Press,Medium,Medium,Medium,"chocolate, nutty",88
+Colombia Geisha,Colombia,4.57,-74.30,Medium,Washed,Pour Over,Medium,Medium,High,"floral, jasmine",95
+Costa Rica Tarrazu,Costa Rica,9.75,-83.75,Medium,Honey,Cold Brew,Medium,Medium,High,"fruity, bright",89
+Costa Rica Naranjo,Costa Rica,10.05,-84.23,Medium,Honey,Clever Dripper,Medium,Medium,High,"orange, chocolate",88
+Sumatra Mandheling,Indonesia,2.53,98.68,Dark,Wet Hulled,Espresso,Low,Full,Medium,"earthy, spicy",85
+Sumatra Lintong,Indonesia,2.37,98.83,Dark,Wet Hulled,Moka Pot,Low,Full,Medium,"earthy, mushroom",84
+Java Preanger,Indonesia,-7.40,107.60,Dark,Wet Hulled,Turkish Coffee,Low,Full,Low,"earthy, tobacco",83
+Vietnam Robusta,Vietnam,14.06,108.28,Dark,Natural,Vietnamese Phin,Low,Full,Low,"earthy, bitter, dark chocolate",78
+Vietnam Arabica,Vietnam,12.24,108.57,Medium,Washed,Drip Machine,Medium,Medium,Medium,"chocolate, nutty",82
+Brazil Santos,Brazil,-14.24,-51.93,Medium,Natural,Pour Over,Medium,Medium,Medium,"nutty, chocolate",84
+Brazil Cerrado,Brazil,-18.33,-48.13,Medium,Natural,French Press,Medium,Full,Medium,"chocolate, nutty",85
+Guatemala Antigua,Guatemala,14.58,-90.52,Medium,Washed,Aeropress,Medium,Medium,High,"chocolate, caramel",87
+Guatemala Huehuetenango,Guatemala,15.47,-91.47,Medium,Washed,Chemex,High,Medium,High,"bright, fruity",88
+Tanzania Peaberry,Tanzania,-6.29,34.78,Light,Washed,Siphon,High,Light,High,"bright, fruity, winey",90
+Mexico Chiapas,Mexico,16.54,-92.74,Medium,Washed,French Press,Medium,Medium,Medium,"chocolate, nutty",86
+Mexico Oaxaca,Mexico,17.40,-96.50,Medium,Natural,Nel Drip,Medium,Full,High,"fruity, chocolate",87
+India Monsooned Malabar,India,13.19,75.42,Dark,Monsooned,French Press,Low,Full,Low,"earthy, spice, spicy",82
+India Mysore,India,12.30,76.65,Medium,Washed,Aeropress,Medium,Full,Medium,"chocolate, nutty",83
+Jamaica Blue Mountain,Jamaica,18.11,-77.30,Medium,Washed,Espresso,Medium,Medium,High,"smooth, floral, nutty",96
+Hawaii Kona,USA,19.90,-155.58,Medium,Washed,Pour Over,Medium,Medium,High,"nutty, buttery, smooth",94
+Panama Geisha,Panama,8.88,-80.60,Medium,Washed,Pour Over,High,Medium,High,"floral, jasmine, bergamot",96
+Rwanda Bourbon,Rwanda,-1.94,29.87,Light,Washed,Pour Over,High,Medium,High,"cherry, floral",89
+Peru Chanchamayo,Peru,-10.94,-75.40,Medium,Washed,Clever Dripper,Medium,Medium,Medium,"fruity, chocolate",86
+Bolivia Caranavi,Bolivia,-15.67,-67.57,Medium,Washed,Aeropress,Medium,Medium,High,"caramel, fruity",87
+Papua New Guinea,Papua New Guinea,-6.16,146.00,Medium,Washed,Drip Machine,Medium,Full,Medium,"fruity, chocolate",86
+Thailand Doi Chang,Thailand,19.97,99.36,Medium,Washed,Cold Brew,Medium,Medium,High,"fruity, floral",85
+Myanmar Ywangan,Myanmar,21.89,95.98,Medium,Washed,Moka Pot,Medium,Medium,High,"chocolate, spice",84
+Uganda Bugisu,Uganda,1.37,34.35,Medium,Washed,French Press,Medium,Full,Medium,"chocolate, berry",84
