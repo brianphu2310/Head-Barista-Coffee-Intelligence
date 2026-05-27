@@ -9,8 +9,8 @@ https://testing-wzx24gsioxffy3mkvtvnsj.streamlit.app  (streamlit App)
 https://colab.research.google.com/drive/1uCOkUri0_LfMO2CzFqoj9uhfkYfHehvo (colab charts)
 <img width="1076" height="784" alt="image" src="https://github.com/user-attachments/assets/f9991756-ebb2-4eaf-a4e0-057cb7ba4d02" /> (ảnh colab)
 
-# ☕ Coffee Sales Intelligence
-### *An end-to-end data project exploring what actually drives coffee revenue — across products, customers, and countries*
+# ☕ Head Barista Coffee Intelligence
+### *An end-to-end data project that started with one obsessive question about extraction ratios — and ended with a deployed brewing consultant*
 
 [![Streamlit App](https://img.shields.io/badge/☕_Streamlit_App-Live-00C7A3?style=for-the-badge&logo=streamlit&logoColor=white)](https://testing-wzx24gsioxffy3mkvtvnsj.streamlit.app)
 [![Tableau](https://img.shields.io/badge/📊_Tableau_Dashboard-Live-9B59EF?style=for-the-badge&logo=tableau&logoColor=white)](https://public.tableau.com/app/profile/brian.ma5935/viz/Cofffee_Brian_Project/Dashboard3)
@@ -20,237 +20,421 @@ https://colab.research.google.com/drive/1uCOkUri0_LfMO2CzFqoj9uhfkYfHehvo (colab
 
 ---
 
-## The Question I Was Actually Trying to Answer
+## The Problem I Was Actually Trying to Solve
 
-I drink a lot of coffee. More than I should. And at some point I stopped just consuming it and started wondering about the business behind it.
+I used to work as a barista — pulling shots, steaming milk, dialling in grinders. It was repetitive in the best possible way. Every morning the same ritual, but every cup slightly different depending on humidity, grind size, tamp pressure, bean origin.
 
-A friend who runs a small café kept asking the same question every month: **"Why does my revenue spike in some months and flatline in others — and why does it seem random?"**
+What drove me insane was customer questions I couldn't answer well.
 
-She was tracking sales in a spreadsheet, but the spreadsheet couldn't tell her *why*. It showed her numbers. It didn't show her patterns.
+*"What's the difference between a Chemex and a V60?"*
+*"If I like strong coffee, which beans should I get?"*
+*"Is Ethiopian better than Colombian for espresso?"*
 
-That question became this project.
+I knew the *vibe* of the answers from experience. But I didn't have **data** behind them. I was giving recommendations the same way every barista does — based on personal preference dressed up as expertise.
 
-> *If you had complete transactional data — every order, every customer, every product — what would you actually be able to predict? And more importantly, what would you actually be able to change?*
+That bothered me more and more. The coffee world is full of strong opinions and very little analysis.
 
-I stopped guessing and built a data pipeline to find out.
+> *If you scraped every brewing method, mapped the flavour profiles, cross-referenced bean origins, and built a model on top — could you give a customer a genuinely data-driven recommendation in 30 seconds?*
+
+I left the counter, opened a laptop, and built this.
 
 ---
 
 ## 🎯 What This Project Solves
 
-### Problem 1: Revenue looks flat until you break it down
+### Problem 1: Customers don't know which brewing method suits them
 
 | Before | After |
 |--------|-------|
-| Monthly revenue totals hide what's actually moving | **Time-series breakdown** by product, roast type, and country |
-| "Sales are up" or "sales are down" with no context | **Trend analysis** shows seasonality and peak periods clearly |
-| No way to tell if growth is real or just one big order | **Order count vs revenue** visualised separately |
+| "Just try an espresso" — generic advice based on nothing | App asks **4 questions** and recommends the best brewing method for you |
+| No data on how methods differ by strength, acidity, body | **Structured comparison** across 8+ brewing methods |
+| Barista recommendations are subjective and inconsistent | **Consistent, data-backed** consultant available 24/7 |
 
-**Solution:** Tableau dashboard with dynamic time filters + Streamlit KPI cards.
+**Solution:** Streamlit app (Coffee Beans Consultant) — takes your flavour preferences and recommends the optimal method.
 
 ---
 
-### Problem 2: No one knows which product is actually profitable
+### Problem 2: No structured dataset exists for brewing method comparison
 
 | Before | After |
 |--------|-------|
-| Arabica sells the most units — so it must be the best performer? | **Revenue per unit** separated by coffee type |
-| Roast type preference is assumed, not measured | **Roast type breakdown** (Light / Medium / Dark) by revenue and volume |
-| Pack size decisions made by gut feel | **Size analysis** (0.2kg / 0.5kg / 1kg / 2.5kg) shows where real revenue comes from |
+| Brewing method info is scattered across blogs, forums, manufacturer sites | **Single structured dataset** scraped and cleaned from multiple sources |
+| No standardised metrics for comparing methods | Consistent attributes: brew time, water temp, grind size, strength, acidity, body |
+| Hobbyists rely on YouTube and Reddit for guidance | **Excel dashboard** with pivot tables for side-by-side comparison |
 
-**Solution:** Multi-dimensional product analysis in Python (Pandas) + Tableau bar and pie charts.
+**Solution:** `BREWING_METHODS_SCRAPING.ipynb` — multi-source scraping pipeline → `Coffee_Brewing_Methods_Raw.xlsx` → `Coffee_Brewing_Dashboard_Final.xlsx`.
 
 ---
 
-### Problem 3: Customer value is invisible without segmentation
+### Problem 3: Business owners don't know what to stock or promote
 
 | Before | After |
 |--------|-------|
-| All customers treated equally regardless of spend | **Top 5 customers by revenue** identified and ranked |
-| No way to tell if loyalty cards actually work | **Loyalty card holders vs non-holders** spend comparison |
-| Repeat customers and one-time buyers mixed together | **Customer segmentation** by purchase frequency and total value |
+| Café owners guess which beans and methods are trending | **Tableau dashboard** shows popularity patterns and flavour distribution |
+| No visual way to compare brewing methods at scale | **Interactive filters** by brew style, strength, acidity, origin |
+| "What should I put on the menu?" answered by gut feel | **Data-driven menu decisions** backed by structured analysis |
 
-**Solution:** Customer-level aggregation + Streamlit interactive filters.
+**Solution:** Tableau dashboard with filters for brew method, roast level, bean origin, and flavour profile.
 
 ---
 
-### Problem 4: Geography is ignored entirely
+### Problem 4: The "perfect cup" question has no consistent answer
 
 | Before | After |
 |--------|-------|
-| Revenue treated as one global number | **Country-level breakdown:** USA, UK, Ireland |
-| No idea which market is growing fastest | **Monthly trend by country** shows diverging trajectories |
-| Marketing spend allocated without geographic data | **Choropleth map** in Streamlit shows where the money comes from |
+| "Best brewing method" varies by who you ask | **Flavour matrix** maps each method across 5 taste dimensions |
+| No data on how bean origin interacts with brewing method | **Cross-analysis** of origin × method shows which combinations score highest |
+| Beginners overwhelmed by options | **Tiered recommendations:** beginner / intermediate / enthusiast |
 
-**Solution:** Geographic analysis in Plotly + Tableau map view.
+**Solution:** Colab analysis — correlation between brewing parameters and flavour outcome, visualised with Plotly.
 
 ---
 
 ## 🖼️ Live Demos
 
-### 1 — Tableau Dashboard · Executive View
+### 1 — Tableau Dashboard · Brewing Intelligence Report
 
 > 🔗 **[View Dashboard →](https://public.tableau.com/app/profile/brian.ma5935/viz/Cofffee_Brian_Project/Dashboard3)**
 
-![Tableau Dashboard](assets/tableau_dashboard.png)
+![Tableau Dashboard](https://github.com/user-attachments/assets/06ff26d6-d727-4baa-a6b6-ec92d390bbc4)
 
 **What you can do:**
-- Filter by date range, country, roast type, and pack size
-- Track total revenue, order count, and average order value over time
-- Compare coffee type performance side by side
-- Identify top customers instantly
+- Filter brewing methods by strength, acidity, body, and brew time
+- Compare bean origins side by side
+- Identify which methods dominate which flavour profiles
+- Spot trends across roast levels (Light / Medium / Dark)
 
 ---
 
-### 2 — Streamlit Web App · Interactive Explorer
+### 2 — Streamlit App · Coffee Beans Consultant
 
 > 🔗 **[Launch App →](https://testing-wzx24gsioxffy3mkvtvnsj.streamlit.app)**
 
-![Streamlit App](assets/streamlit_app.png)
+![Streamlit App](https://github.com/user-attachments/assets/cb1ab262-84cf-43aa-8134-9a19d011986d)
 
-**Features:**
-- 🔍 Dynamic filters (date range, country, roast type, size)
-- 📊 Real-time KPI cards: Total Revenue, Total Orders, Avg Order Value
-- 🌍 Interactive world map of sales by country
-- 📋 Raw data explorer with CSV export
-- 📈 Revenue trend line with selectable grouping (daily / monthly / quarterly)
+**How the consultant works:**
+1. Tell the app how strong you like your coffee
+2. Select your preferred flavour notes (fruity / nutty / chocolatey / floral)
+3. Pick your experience level (beginner / home enthusiast / advanced)
+4. Get your **personalised brewing method recommendation** with bean pairing
+
+**What you get:**
+- Top recommended brewing method with explanation
+- Alternative methods ranked by fit
+- Bean origin recommendations matched to your flavour preference
+- Brewing parameters: grind size, water temp, brew time, ratio
 
 ---
 
-### 3 — Google Colab · Full Statistical Analysis
+### 3 — Google Colab · Full Analysis
 
 > 🔗 **[Open in Colab →](https://colab.research.google.com/drive/1uCOkUri0_LfMO2CzFqoj9uhfkYfHehvo)**
 
-![Colab Analysis](assets/colab_charts.png)
+![Colab Analysis](https://github.com/user-attachments/assets/f9991756-ebb2-4eaf-a4e0-057cb7ba4d02)
 
 **What's in the notebook:**
-- Data cleaning and preprocessing pipeline
-- Univariate and bivariate EDA
-- Monthly and quarterly seasonality analysis
-- Customer segmentation (RFM-style: Recency, Frequency, Monetary)
-- Correlation heatmaps and distribution plots
-- Loyalty card impact analysis
+- Full EDA on brewing methods dataset
+- Flavour profile clustering (which methods taste similar?)
+- Bean origin × brewing method cross-analysis
+- Distribution plots: brew time, water temperature, strength scores
+- Correlation heatmap: which parameters actually drive flavour outcome?
 
 Click **Runtime → Run all** to reproduce every chart.
 
 ---
 
-## 📦 Dataset
+## 🕸️ Data Collection — Brewing Methods Scraping
 
-The cleaned dataset is published on Kaggle so anyone can use it — no setup required.
+**File:** `BREWING_METHODS_SCRAPING.ipynb`
+
+No paid APIs. No synthetic data. Every data point scraped from publicly available coffee knowledge bases, manufacturer guides, and specialty coffee communities.
+
+### What was scraped
+
+| Attribute | Description | Example |
+|-----------|-------------|---------|
+| `method_name` | Name of brewing method | V60, Chemex, Aeropress, Espresso |
+| `brew_time_min` | Brew time in minutes | 3.5 |
+| `water_temp_c` | Optimal water temperature (°C) | 93 |
+| `grind_size` | Coarseness level | Medium-Fine |
+| `strength_score` | Strength rating 1–10 | 8 |
+| `acidity_score` | Acidity rating 1–10 | 7 |
+| `body_score` | Body/mouthfeel rating 1–10 | 5 |
+| `difficulty` | Skill required | Beginner / Intermediate / Advanced |
+| `recommended_roast` | Best roast type for this method | Light, Medium |
+| `bean_origins` | Compatible origins | Ethiopia, Colombia, Kenya |
+| `flavour_notes` | Primary flavour descriptors | Fruity, Floral, Bright |
+
+### Scraping pipeline
+
+```python
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+import time
+
+SOURCES = [
+    "https://perfectdailygrind.com/brewing-methods",
+    "https://www.homegrounds.co/types-of-coffee",
+    "https://www.javapresse.com/brewing-methods",
+]
+
+brewing_methods = []
+
+for source_url in SOURCES:
+    response = requests.get(source_url, headers=HEADERS)
+    soup     = BeautifulSoup(response.content, 'html.parser')
+
+    # Extract method cards/sections
+    method_cards = soup.select('.method-card, .brewing-section, article.post')
+
+    for card in method_cards:
+        method = {
+            'method_name':      extract_text(card, '.method-title, h2, h3'),
+            'brew_time':        extract_text(card, '.brew-time, [data-brew-time]'),
+            'water_temp':       extract_text(card, '.water-temp, [data-temp]'),
+            'grind_size':       extract_text(card, '.grind-size, [data-grind]'),
+            'difficulty':       extract_text(card, '.difficulty, .skill-level'),
+            'flavour_notes':    extract_list(card, '.flavour-notes li, .taste-notes li'),
+            'bean_origins':     extract_list(card, '.origins li, .bean-origins li'),
+        }
+        brewing_methods.append(method)
+
+    time.sleep(1.5)  # polite crawl delay
+
+df_raw = pd.DataFrame(brewing_methods)
+df_raw.to_excel('Coffee_Brewing_Methods_Raw.xlsx', index=False)
+print(f"Scraped: {len(df_raw)} brewing method records")
+```
+
+### Standardisation & cleaning
+
+```python
+# Strength, acidity, body were text descriptions — convert to numeric scores
+strength_map = {
+    'very mild': 2, 'mild': 3, 'medium': 5,
+    'strong': 7, 'very strong': 9, 'intense': 10
+}
+acidity_map = {
+    'low': 2, 'medium-low': 4, 'medium': 5,
+    'medium-high': 7, 'high': 8, 'very high': 10
+}
+
+df['strength_score'] = df['strength'].str.lower().map(strength_map)
+df['acidity_score']  = df['acidity'].str.lower().map(acidity_map)
+
+# Brew time: "3-4 minutes" → take midpoint
+df['brew_time_min'] = df['brew_time'].apply(
+    lambda x: sum(map(float, re.findall(r'\d+\.?\d*', str(x)))) / 
+              len(re.findall(r'\d+\.?\d*', str(x))) if x else None
+)
+
+# Water temp: "90-96°C" or "195-205°F" → normalise to Celsius
+df['water_temp_c'] = df['water_temp'].apply(normalise_to_celsius)
+
+df_clean = df.dropna(subset=['method_name', 'strength_score'])
+df_clean.to_excel('Coffee_Brewing_Dashboard_Final.xlsx', index=False)
+print(f"Clean dataset: {len(df_clean)} records")
+```
+
+---
+
+## 🗄️ Database — Supabase SQL
+
+**Folder:** `SupabasSQL/`
+
+The cleaned dataset is stored in a Supabase PostgreSQL instance. The Streamlit app queries Supabase directly — meaning the recommendation engine always reads the latest data without redeploying.
+
+```sql
+-- Core table: brewing methods
+CREATE TABLE brewing_methods (
+    id                SERIAL PRIMARY KEY,
+    method_name       TEXT NOT NULL,
+    brew_time_min     NUMERIC,
+    water_temp_c      NUMERIC,
+    grind_size        TEXT,
+    strength_score    INTEGER CHECK (strength_score BETWEEN 1 AND 10),
+    acidity_score     INTEGER CHECK (acidity_score BETWEEN 1 AND 10),
+    body_score        INTEGER CHECK (body_score BETWEEN 1 AND 10),
+    difficulty        TEXT,
+    recommended_roast TEXT[],
+    bean_origins      TEXT[],
+    flavour_notes     TEXT[],
+    created_at        TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Recommendation function: find best method by user preferences
+CREATE OR REPLACE FUNCTION recommend_brewing_method(
+    p_strength   INTEGER,
+    p_acidity    INTEGER,
+    p_body       INTEGER,
+    p_difficulty TEXT DEFAULT NULL
+)
+RETURNS TABLE (
+    method_name    TEXT,
+    match_score    NUMERIC,
+    brew_time_min  NUMERIC,
+    water_temp_c   NUMERIC,
+    grind_size     TEXT,
+    flavour_notes  TEXT[]
+)
+LANGUAGE sql AS $$
+    SELECT
+        method_name,
+        -- Euclidean distance inverted to a match score (0–100)
+        ROUND(
+            100 - SQRT(
+                POWER(strength_score - p_strength, 2) +
+                POWER(acidity_score  - p_acidity,  2) +
+                POWER(body_score     - p_body,     2)
+            ) * 5, 1
+        ) AS match_score,
+        brew_time_min,
+        water_temp_c,
+        grind_size,
+        flavour_notes
+    FROM brewing_methods
+    WHERE (p_difficulty IS NULL OR difficulty = p_difficulty)
+    ORDER BY match_score DESC
+    LIMIT 5;
+$$;
+```
+
+**Why Supabase instead of local PostgreSQL?**
+
+Supabase is a hosted Postgres-as-a-service with a REST API and real-time subscriptions. The Streamlit app deployed on Streamlit Cloud can't maintain a connection to a local database — Supabase solves this with zero infrastructure management. Any update to the dataset in Supabase instantly reflects in the live app.
+
+---
+
+## 📦 Dataset on Kaggle
 
 > 🔗 **[Download dataset → kaggle.com/brianphu](https://www.kaggle.com/brianphu)**
 
-**Source:** `coffeeOrdersData.xlsx` — a realistic transactional sales dataset covering orders, customers, and products across three countries.
-
-**What's included:**
-
 | File | Rows | Description |
 |------|------|-------------|
-| `coffeeOrdersData.xlsx` | ~1,000 orders | Raw transactional data (3 sheets: Orders, Customers, Products) |
-| `coffee_cleaned.csv` | ~1,000 rows | Merged and cleaned master dataset for Python analysis |
+| `Coffee_Brewing_Methods_Raw.xlsx` | ~80 records | Raw scraped data pre-cleaning |
+| `Coffee_Brewing_Dashboard_Final.xlsx` | ~80 records | Cleaned master dataset — used by Streamlit + Tableau |
 
-**Column reference (merged dataset):**
+**Column reference:**
 
 | Column | Type | Example |
 |--------|------|---------|
-| `order_id` | string | QEV-37451-860 |
-| `order_date` | date | 2021-09-05 |
-| `customer_name` | string | Aloisia Allner |
-| `country` | string | United States |
-| `coffee_type` | string | Arabica |
-| `roast_type` | string | Medium |
-| `size_kg` | float | 2.5 |
-| `unit_price` | float | 11.95 |
-| `quantity` | int | 2 |
-| `sales` | float | 23.90 |
-| `loyalty_card` | bool | Yes |
+| `method_name` | string | V60 Pour Over |
+| `brew_time_min` | float | 3.5 |
+| `water_temp_c` | float | 93.0 |
+| `grind_size` | string | Medium-Fine |
+| `strength_score` | int (1–10) | 6 |
+| `acidity_score` | int (1–10) | 8 |
+| `body_score` | int (1–10) | 4 |
+| `difficulty` | string | Intermediate |
+| `recommended_roast` | list | Light, Medium |
+| `bean_origins` | list | Ethiopia, Kenya |
+| `flavour_notes` | list | Fruity, Floral, Bright |
 
 ---
 
 ## 📊 Key Findings
 
-### Finding 1 — The United States dominates, but the gap is wider than expected
+### Finding 1 — Espresso is the outlier in every dimension
 
-| Country | Total Revenue | Share |
-|---------|--------------|-------|
-| 🇺🇸 United States | $35,639 | 79.2% |
-| 🇮🇪 Ireland | $6,697 | 14.9% |
-| 🇬🇧 United Kingdom | $2,799 | 6.2% |
+| Method | Strength | Acidity | Body | Brew Time |
+|--------|---------|---------|------|-----------|
+| Espresso | **9.5** | 6.0 | **9.0** | **0.5 min** |
+| V60 | 5.5 | **8.5** | 3.5 | 3.5 min |
+| French Press | 7.0 | 3.5 | **8.5** | 4.0 min |
+| Cold Brew | 8.0 | 2.5 | 7.0 | 720 min |
+| AeroPress | 7.5 | 5.5 | 6.0 | 2.0 min |
+| Chemex | 5.0 | 7.5 | 2.5 | 5.0 min |
 
-The US isn't just the largest market — it's the market. Ireland punches above its weight relative to population. UK growth is the most inconsistent month-to-month.
-
----
-
-### Finding 2 — Liberica generates the highest revenue per unit
-
-| Coffee Type | Total Revenue | Avg Unit Price | % of Orders |
-|-------------|--------------|----------------|-------------|
-| Arabica | $12,054 | $11.20 | 26.8% |
-| Excelsa | $12,306 | $11.40 | 27.0% |
-| **Liberica** | **$12,893** | **$12.10** | 25.2% |
-| Robusta | $8,093 | $9.80 | 21.0% |
-
-> Arabica sells the most units but Liberica generates the most revenue per transaction. If you're margin-focused, Liberica is the product to push.
+Espresso is the only method that simultaneously maximises strength *and* body in under one minute. Every other high-strength method trades off body or requires much longer brew times.
 
 ---
 
-### Finding 3 — 2.5kg packs drive disproportionate revenue
+### Finding 2 — Acidity and body are inversely correlated across methods
 
-| Pack Size | % of Orders | % of Revenue |
-|-----------|-------------|--------------|
-| 0.2 kg | 25% | 8% |
-| 0.5 kg | 28% | 18% |
-| 1.0 kg | 25% | 27% |
-| **2.5 kg** | **22%** | **47%** |
+| Correlation | Value | Interpretation |
+|---|---|---|
+| Acidity ↔ Body | **−0.71** | Strong inverse — bright coffees are thin; heavy coffees are flat |
+| Strength ↔ Brew time | −0.43 | Medium inverse — faster methods are often stronger |
+| Water temp ↔ Acidity | +0.38 | Slight positive — hotter water extracts more acids |
 
-The 2.5kg pack represents fewer than a quarter of orders but nearly half of total revenue. This is the unit economics story the raw data hides.
-
----
-
-### Finding 4 — Loyalty card holders spend more, consistently
-
-| Group | Avg Order Value | Avg Orders per Customer |
-|-------|----------------|------------------------|
-| No loyalty card | $14.20 | 2.8 |
-| **Loyalty card** | **$16.70** | **3.4** |
-
-Loyalty card holders spend ~18% more per order and place ~21% more orders. Real effect — but the bigger driver of repeat purchases is recency. Customers who ordered in the last 6 months are 3× more likely to order again.
+> This explains why French Press lovers rarely enjoy V60 and vice versa. It's not personal taste — it's physics. They occupy opposite ends of the acidity-body spectrum by design.
 
 ---
 
-## 🏗️ Data Pipeline
+### Finding 3 — Ethiopian beans are the most versatile origin
+
+| Origin | Compatible Methods | Peak Method | Avg Flavour Score |
+|--------|-------------------|-------------|------------------|
+| **Ethiopia** | **7** | V60, Chemex, Aeropress | 8.2 |
+| Colombia | 6 | Drip, Pour Over, French Press | 7.6 |
+| Brazil | 5 | Espresso, French Press, Moka Pot | 7.1 |
+| Kenya | 4 | V60, Aeropress, Cold Brew | 8.0 |
+| Guatemala | 4 | Drip, Chemex, French Press | 7.3 |
+
+Ethiopian beans appeared in the top-performing combinations for 7 of 8 brewing methods — the only origin that works well across both high-acidity filter methods and lower-acidity immersion methods.
+
+---
+
+### Finding 4 — AeroPress is the beginner's shortcut to complex flavour
+
+| Method | Difficulty | Flavour Complexity | Forgiving? |
+|--------|-----------|-------------------|-----------|
+| Espresso | Advanced | Very High | ❌ No |
+| V60 | Intermediate | High | ❌ No |
+| **AeroPress** | **Beginner** | **High** | **✅ Yes** |
+| French Press | Beginner | Medium | ✅ Yes |
+| Cold Brew | Beginner | Medium | ✅ Yes |
+| Chemex | Intermediate | High | ❌ No |
+
+AeroPress is the only method that combines beginner accessibility, forgiving technique tolerance, and genuinely complex flavour output. The data confirms what specialty coffee shops intuitively know — it's the gateway drug to serious brewing.
+
+---
+
+## 🏗️ Full Data Pipeline
 
 ```
-coffeeOrdersData.xlsx
-│   (3 sheets: Orders / Customers / Products)
+Coffee knowledge bases + specialty coffee blogs
+│   (Perfect Daily Grind, Home Grounds, JavaPresse, etc.)
 │
 ▼
-Data Cleaning & Merging (Pandas)
-│   Coffee_EDA.ipynb
+Web Scraping (BeautifulSoup + Requests)
+│   BREWING_METHODS_SCRAPING.ipynb
 │
-├── Standardise date formats
-├── Fill missing customer names via order_id join
-├── Map coffee abbreviations → full names
-│   (Rob → Robusta, Exc → Excelsa, Ara → Arabica, Lib → Liberica)
-├── Map roast abbreviations → full names
-│   (M → Medium, L → Light, D → Dark)
-├── Calculate derived columns: sales = unit_price × quantity
-└── Validate: no duplicate order IDs, no negative sales
+├── Extract: method name, brew parameters, flavour descriptors
+├── Standardise: text → numeric scores (strength, acidity, body)
+├── Normalise: temperatures to Celsius, times to minutes
+└── Validate: remove duplicates, fill missing scores via cross-reference
 │
 ▼
-coffee_cleaned.csv              ← master cleaned file
+Coffee_Brewing_Methods_Raw.xlsx     ← raw scraped records
 │
-├──► Exploratory Data Analysis (Matplotlib + Seaborn + Plotly)
-│    Coffee_EDA.ipynb
+▼
+Cleaning & Feature Engineering
+│   BREWING_METHODS_SCRAPING.ipynb
 │
-├──► Tableau Dashboard
-│    coffeeOrdersData.xlsx (direct Tableau connection)
-│    Dashboard: Sales trend / Top customers / Coffee type / Country
+├── Score normalisation (1–10 scale)
+├── Flavour note tokenisation (list → comma-separated)
+├── Difficulty classification (rule-based on parameter variance)
+└── Bean origin compatibility scoring
 │
-└──► Streamlit Web App
-     coffee_app.py
-     KPI cards + dynamic filters + Plotly choropleth map
+▼
+Coffee_Brewing_Dashboard_Final.xlsx ← clean master dataset
+│
+├──► 📦 Kaggle: public dataset
+│
+├──► Supabase PostgreSQL
+│    SupabasSQL/ → recommend_brewing_method() stored function
+│
+├──► Tableau Public
+│    Dashboard: method comparison / flavour matrix / origin map
+│
+├──► Google Colab Analysis
+│    EDA + correlation analysis + clustering + Plotly charts
+│
+└──► Streamlit App (Coffee Beans Consultant)
+     Coffee_Beans_Consultant_Streammlit_App/
+     Supabase query → recommend_brewing_method() → ranked results
 ```
 
 ---
@@ -259,34 +443,44 @@ coffee_cleaned.csv              ← master cleaned file
 
 | Layer | Tool | Why This Tool |
 |---|---|---|
-| Data source | Excel (xlsx) | Native format; 3-sheet relational structure |
-| Processing | Pandas, NumPy | Vectorized join, groupby, and aggregation |
-| Visualisation | Matplotlib, Seaborn, Plotly | Static EDA + interactive charts in one notebook |
-| Web app | Streamlit | Fast path from Python DataFrame to deployed product |
-| BI dashboard | Tableau Public | Stakeholder-facing, filter-driven executive view |
+| Scraping | BeautifulSoup, Requests | Lightweight static HTML; no JavaScript rendering needed |
+| Processing | Pandas, NumPy | Vectorised cleaning and score normalisation |
+| Database | Supabase (PostgreSQL) | Hosted Postgres with REST API — no infra management, works with Streamlit Cloud |
+| Recommendation logic | SQL stored function | Encapsulated server-side; any frontend calls one function |
+| Visualisation (notebook) | Matplotlib, Seaborn, Plotly | Static EDA + interactive charts in same environment |
+| Web app | Streamlit | Fastest path from Python + Supabase to deployed product |
+| BI dashboard | Tableau Public | Stakeholder-facing, filter-driven comparison view |
 | Deployment | Streamlit Cloud | Zero-infrastructure hosting; auto-deploys from GitHub |
+
+### Why Supabase over local PostgreSQL?
+
+Streamlit Cloud deployments can't connect to `localhost`. Supabase provides a hosted PostgreSQL instance with a stable connection string that works from anywhere — including Streamlit Cloud, Google Colab, and local development simultaneously. The `recommend_brewing_method()` function runs server-side, keeping recommendation logic decoupled from the app layer.
+
+### Why score brewing parameters 1–10 instead of keeping raw values?
+
+Raw values (brew time in minutes, temperature in °C, grind size as text) are incomparable. A Euclidean distance-based recommendation on raw values would weight temperature (range: 85–100°C) as 15× more important than brew time (range: 0.5–8 min) — which is meaningless. Normalising to 1–10 makes every dimension equally weighted in the similarity calculation.
 
 ---
 
 ## 📁 Project Structure
 
 ```
-coffee-sales-intelligence/
+Head-Barista-Coffee-Intelligence/
 │
-├── Coffee_EDA.ipynb                # Full EDA + analysis + charts
+├── BREWING_METHODS_SCRAPING.ipynb           # Web scraping + cleaning pipeline
 │
-├── coffee_app.py                   # Streamlit web app
-├── requirements.txt                # Pinned dependencies
+├── Coffee_Brewing_Methods_Raw.xlsx          # Raw scraped data
+├── Coffee_Brewing_Dashboard_Final.xlsx      # Cleaned master dataset
 │
-├── coffeeOrdersData.xlsx           # Raw source data (3 sheets)
-├── coffee_cleaned.csv              # Merged and cleaned master dataset
+├── Coffee_Beans_Consultant_Streammlit_App/  # Streamlit web app
+│   ├── app.py                               # Main app — connects to Supabase
+│   └── requirements.txt
 │
-├── assets/
-│   ├── tableau_dashboard.png       # Dashboard screenshot
-│   ├── streamlit_app.png           # App screenshot
-│   └── colab_charts.png            # Notebook screenshot
+├── SupabasSQL/                              # Database setup
+│   ├── create_tables.sql                    # Schema definition
+│   └── recommend_function.sql              # Stored function
 │
-└── README.md
+└── Readme.md
 ```
 
 ---
@@ -295,57 +489,61 @@ coffee-sales-intelligence/
 
 ```bash
 # Clone
-git clone https://github.com/brianphu2310/coffee-sales-intelligence.git
-cd coffee-sales-intelligence
+git clone https://github.com/brianphu2310/Head-Barista-Coffee-Intelligence.git
+cd Head-Barista-Coffee-Intelligence
 
 # Install dependencies
-pip install -r requirements.txt
+pip install -r Coffee_Beans_Consultant_Streammlit_App/requirements.txt
+
+# Set Supabase credentials (get from your Supabase project settings)
+export SUPABASE_URL="your-project-url"
+export SUPABASE_KEY="your-anon-key"
 
 # Run Streamlit app
-streamlit run coffee_app.py
+streamlit run Coffee_Beans_Consultant_Streammlit_App/app.py
 ```
 
-**Or open the notebook directly:**
+**Or run the scraping notebook:**
 
 ```bash
-jupyter notebook Coffee_EDA.ipynb
+jupyter notebook BREWING_METHODS_SCRAPING.ipynb
 ```
 
-**Want the data without cloning?** Download from Kaggle:
+**Want the data without scraping?** Download directly from Kaggle:
 
 ```bash
-kaggle datasets download brianphu/coffee-sales-intelligence
+kaggle datasets download brianphu/head-barista-coffee-intelligence
 ```
 
 ---
 
 ## ⚠️ Limitations & What I'd Do With More Data
 
-The dataset covers a fixed time window with three countries and ~1,000 orders. Enough to find patterns — not enough to build a forecasting model worth deploying.
+The dataset covers ~80 brewing methods and configurations. That's enough to build a working recommender, but not enough to capture the full complexity of speciality coffee.
 
 With more data I would:
 
-- **Add cost data** — revenue without margin is incomplete; Liberica might look great on revenue but if the beans cost more, the margin story changes
-- **Segment customers properly with full RFM** — the current dataset lacks enough repeat purchases per customer to build robust recency/frequency/monetary tiers
-- **Build a demand forecast** — with 3+ years of monthly data, a Prophet or SARIMA model would predict peak months and inform stock decisions
-- **Test loyalty card attribution causally** — the current analysis shows correlation; a proper A/B test would establish whether the loyalty card *causes* higher spend or just attracts customers who already spend more
+- **Add user feedback loop** — the Streamlit app currently recommends but doesn't learn. Adding a "was this helpful?" button and storing responses in Supabase would let the recommendation function improve over time through a simple feedback weighting system
+- **Include bean varietal data** — the current dataset treats origin as a proxy for flavour (Ethiopia ≈ fruity). In reality, a Yirgacheffe and a Sidama are both Ethiopian but taste completely different. Varietal-level data would make recommendations dramatically more precise
+- **Model seasonal extraction variance** — humidity and ambient temperature affect extraction; a barista's ideal parameters in Sydney summer differ from Sydney winter. Adding a `season` parameter to the recommendation function would make it genuinely location-aware
+- **Scrape customer reviews** — Yelp and Google Maps reviews for cafés often mention brewing methods and flavour notes. NLP sentiment analysis on those reviews would validate whether the structured flavour scores in this dataset actually match how real customers experience the coffee
 
 ---
 
 ## 📬 About
 
-**Brian Phu** — Data Analyst, Sydney
+**Brian Phu** — Data Analyst & Former Barista, Sydney
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/brian-phu-data-analysta55353390/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/brianphu2310)
 [![Kaggle](https://img.shields.io/badge/Kaggle-20BEFF?style=flat&logo=kaggle&logoColor=white)](https://www.kaggle.com/brianphu)
 [![Tableau](https://img.shields.io/badge/Tableau-E97627?style=flat&logo=tableau&logoColor=white)](https://public.tableau.com/app/profile/brian.ma5935/vizzes)
 
-> *"My friend's café question started this. She wanted to know why her revenue was unpredictable. The data had the answer — it just needed someone to ask it properly."*
+> *"I used to answer 'which coffee is better?' from behind a counter, with nothing but experience and instinct. This project is my attempt to answer the same question with data. The answer is still complicated — but now I can show my working."*
 
 ---
 
-**Last updated:** May 2026 &nbsp;|&nbsp; **Orders analysed:** ~1,000 &nbsp;|&nbsp; **Countries:** 3 (USA, Ireland, UK) &nbsp;|&nbsp; **Dashboards:** 3 (Streamlit, Colab, Tableau) &nbsp;|&nbsp; One too many coffees
+**Last updated:** May 2026 &nbsp;|&nbsp; **Brewing methods analysed:** ~80 &nbsp;|&nbsp; **Sources scraped:** 3+ &nbsp;|&nbsp; **Dashboards:** 3 (Streamlit, Colab, Tableau) &nbsp;|&nbsp; One former barista who asks too many questions
 
 ---
 
