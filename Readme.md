@@ -123,6 +123,9 @@ I left the counter, opened a laptop, and built this.
 > 🔗 **[Open in Colab →](https://colab.research.google.com/drive/1uCOkUri0_LfMO2CzFqoj9uhfkYfHehvo)**
 
 ![Colab Analysis](https://github.com/user-attachments/assets/f9991756-ebb2-4eaf-a4e0-057cb7ba4d02)
+<img width="1509" height="852" alt="image" src="https://github.com/user-attachments/assets/e5465a9a-1bc1-4bf4-b74e-2475213ff550" />
+<img width="697" height="342" alt="image" src="https://github.com/user-attachments/assets/c0d21bcb-14bd-4dd4-9e37-a84e6773f93d" />
+<img width="1505" height="851" alt="image" src="https://github.com/user-attachments/assets/b5f721d6-915c-4116-9c2e-379afea49b0f" />
 
 **What's in the notebook:**
 - Full EDA on brewing methods dataset
