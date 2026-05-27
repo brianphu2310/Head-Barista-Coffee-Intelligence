@@ -1,3 +1,4 @@
+<img width="594" height="670" alt="image" src="https://github.com/user-attachments/assets/d572b47b-0d56-4600-8b2a-b8802460865e" />
 
 
 # ☕ Head Barista Coffee Intelligence
