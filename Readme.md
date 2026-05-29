@@ -32,7 +32,7 @@ I left the counter, opened a laptop, and built this.
 
 ---
 
-## 🎯 What This Project Solves
+##  What This Project Solves
 
 ### Problem 1: Customers don't know which brewing method suits them
 
@@ -82,13 +82,13 @@ I left the counter, opened a laptop, and built this.
 
 ---
 
-## 🖼️ Live Demos
+##  Live Demos
 
 ### 1 — Tableau Dashboard · Brewing Intelligence Report
 
-> 🔗 **[View Dashboard →](https://public.tableau.com/app/profile/brian.ma5935/viz/Cofffee_Brian_Project/Dashboard3)**
+>  **[View Dashboard →](https://public.tableau.com/app/profile/brian.ma5935/viz/Cofffee_Brian_Project/Dashboard3)**
+<img width="1279" height="752" alt="Pasted Graphic 1" src="https://github.com/user-attachments/assets/08714b18-642e-45c0-b206-00d52fc2b476" />
 
-![Tableau Dashboard](https://github.com/user-attachments/assets/06ff26d6-d727-4baa-a6b6-ec92d390bbc4)
 
 **What you can do:**
 - Filter brewing methods by strength, acidity, body, and brew time
@@ -100,9 +100,10 @@ I left the counter, opened a laptop, and built this.
 
 ### 2 — Streamlit App · Coffee Beans Consultant
 
-> 🔗 **[Launch App →](https://testing-wzx24gsioxffy3mkvtvnsj.streamlit.app)**
+>  **[Launch App →](https://testing-wzx24gsioxffy3mkvtvnsj.streamlit.app)**
 
-![Streamlit App](https://github.com/user-attachments/assets/cb1ab262-84cf-43aa-8134-9a19d011986d)
+<img width="1512" height="842" alt="image" src="https://github.com/user-attachments/assets/930ad19b-c087-4e80-b992-b367283b63ac" />
+
 
 **How the consultant works:**
 1. Tell the app how strong you like your coffee
@@ -120,7 +121,7 @@ I left the counter, opened a laptop, and built this.
 
 ### 3 — Google Colab · Full Analysis
 
-> 🔗 **[Open in Colab →](https://colab.research.google.com/drive/1uCOkUri0_LfMO2CzFqoj9uhfkYfHehvo)**
+>  **[Open in Colab →](https://colab.research.google.com/drive/1uCOkUri0_LfMO2CzFqoj9uhfkYfHehvo)**
 
 ![Colab Analysis](https://github.com/user-attachments/assets/f9991756-ebb2-4eaf-a4e0-057cb7ba4d02)
 <img width="1509" height="852" alt="image" src="https://github.com/user-attachments/assets/e5465a9a-1bc1-4bf4-b74e-2475213ff550" />
@@ -138,7 +139,7 @@ Click **Runtime → Run all** to reproduce every chart.
 
 ---
 
-## 🕸️ Data Collection — Brewing Methods Scraping
+##  Data Collection — Brewing Methods Scraping
 
 **File:** `BREWING_METHODS_SCRAPING.ipynb`
 
@@ -234,7 +235,7 @@ print(f"Clean dataset: {len(df_clean)} records")
 
 ---
 
-## 🗄️ Database — Supabase SQL
+##  Database — Supabase SQL
 
 **Folder:** `SupabasSQL/`
 
@@ -301,9 +302,9 @@ Supabase is a hosted Postgres-as-a-service with a REST API and real-time subscri
 
 ---
 
-## 📦 Dataset on Kaggle
+##  Dataset on Kaggle
 
-> 🔗 **[Download dataset → kaggle.com/brianphu](https://www.kaggle.com/brianphu)**
+>  **[Download dataset → kaggle.com/brianphu](https://www.kaggle.com/brianphu)**
 
 | File | Rows | Description |
 |------|------|-------------|
@@ -328,7 +329,7 @@ Supabase is a hosted Postgres-as-a-service with a REST API and real-time subscri
 
 ---
 
-## 📊 Key Findings
+##  Key Findings
 
 ### Finding 1 — Espresso is the outlier in every dimension
 
@@ -386,7 +387,7 @@ AeroPress is the only method that combines beginner accessibility, forgiving tec
 
 ---
 
-## 🏗️ Full Data Pipeline
+##  Full Data Pipeline
 
 ```
 Coffee knowledge bases + specialty coffee blogs
@@ -416,7 +417,7 @@ Cleaning & Feature Engineering
 ▼
 Coffee_Brewing_Dashboard_Final.xlsx ← clean master dataset
 │
-├──► 📦 Kaggle: public dataset
+├──►  Kaggle: public dataset
 │
 ├──► Supabase PostgreSQL
 │    SupabasSQL/ → recommend_brewing_method() stored function
@@ -434,7 +435,7 @@ Coffee_Brewing_Dashboard_Final.xlsx ← clean master dataset
 
 ---
 
-## ⚙️ Technical Stack
+##  Technical Stack
 
 | Layer | Tool | Why This Tool |
 |---|---|---|
@@ -457,7 +458,7 @@ Raw values (brew time in minutes, temperature in °C, grind size as text) are in
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 Head-Barista-Coffee-Intelligence/
@@ -480,7 +481,7 @@ Head-Barista-Coffee-Intelligence/
 
 ---
 
-## 🚀 How to Run Locally
+##  How to Run Locally
 
 ```bash
 # Clone
@@ -512,7 +513,7 @@ kaggle datasets download brianphu/head-barista-coffee-intelligence
 
 ---
 
-## ⚠️ Limitations & What I'd Do With More Data
+##  Limitations & What I'd Do With More Data
 
 The dataset covers ~80 brewing methods and configurations. That's enough to build a working recommender, but not enough to capture the full complexity of speciality coffee.
 
@@ -525,7 +526,7 @@ With more data I would:
 
 ---
 
-## 📬 About
+##  About
 
 **Brian Phu** — Data Analyst & Former Barista, Sydney
 
