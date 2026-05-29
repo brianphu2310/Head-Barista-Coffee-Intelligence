@@ -83,6 +83,8 @@ I left the counter, opened a laptop, and built this.
 ---
 
 ##  Live Demos
+<img width="1373" height="584" alt="Screenshot 2026-04-16 at 8 24 48 pm" src="https://github.com/user-attachments/assets/3858badb-d28a-43d8-8b37-eae51030b90f" />
+
 
 ### 1 — Tableau Dashboard · Brewing Intelligence Report
 
